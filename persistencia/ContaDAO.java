@@ -10,26 +10,18 @@ import javax.swing.JOptionPane;
 
 public class ContaDAO {
 
-    /*public static void main(String[] args) {
-
-        //Conta c1 = new ContaCorrente("Jose Silva",123,"CC",50,201);
-        //inserirConta(c1);
-        //System.out.println("");
-        buscarConta();
-
-    }*/
     //METODO PARA PESQUISAR OS DADOS DO BANCO DE DADOS
     public static void buscarConta() {
 
         //Java DataBase Connection (JDBC)
-        //INSTANCIANDO O DRIVER QUE COMUNICA COM O BANCO DE DADOS COM O LAN«AMENTO DE EXCE«’ES
-        //CRIANDO A CONEX√O COM O BANCO DE DADOS
+        //INSTANCIANDO O DRIVER QUE COMUNICA COM O BANCO DE DADOS COM O LAN√áAMENTO DE EXCE√á√ïES
+        //CRIANDO A CONEX√ÉO COM O BANCO DE DADOS
         Connection c = ConnectionDAO.getConnection();
 
-        //PREPARANDO O ENVIO DO CODIGO SQL PARA EXECU«√O NO BANCO DE DADOS
+        //PREPARANDO O ENVIO DO CODIGO SQL PARA EXECU√á√ÉO NO BANCO DE DADOS
         PreparedStatement stmt = null;
 
-        //PREPARANDO A CONFIRMA«√O DO ENVIO DO CODIGO SQL PARA EXUCU«√O NO BANCO DE DADOS
+        //PREPARANDO A CONFIRMA√á√ÉO DO ENVIO DO CODIGO SQL PARA EXUCU√á√ÉO NO BANCO DE DADOS
         ResultSet rs = null;
 
         try {
@@ -37,8 +29,8 @@ public class ContaDAO {
             rs = stmt.executeQuery();
 
             //JOptionPane.showMessageDialog(null,"---------------CONTAS NO BANCO---------------");
-            //COLETANDO OS DADOS INDEPENDENTE DO TAMANHO DA TABELA, UTILIZANDO UM WHILE PARA SEMPRE QUE A PROXIMA LINHA N√O FOR VAZIA, 
-            //    ELE BUSCAR AS INFORMA«’ES. CONDICAO BOOLEANA
+            //COLETANDO OS DADOS INDEPENDENTE DO TAMANHO DA TABELA, UTILIZANDO UM WHILE PARA SEMPRE QUE A PROXIMA LINHA N√ÉO FOR VAZIA, 
+            //    ELE BUSCAR AS INFORMA√á√ïES. CONDICAO BOOLEANA
             while (rs.next()) {
 
                 String titular = rs.getString("TITULAR");
@@ -53,19 +45,13 @@ public class ContaDAO {
                         + "\nTipo da Conta: " + tipoConta
                         + "\nSaldo: " + saldo
                         + "\nAgencia Vinculada: " + agencia);
-                /*
-                JOptionPane.showMessageDialog(null,"Titular: " + titular);
-                JOptionPane.showMessageDialog("Agencia: " + agencia);
-                System.out.println("Numero: " + numero);
-                System.out.println("Saldo: " + saldo);
-                System.out.println("");
-                 */
+               
             }
 
         } catch (SQLException e) {
-            //IMPRIME O ERRO NA TELA NO MOMENTO EXATO DA FALHA, SEM INTERROMPER A EXECU«√O DO PROGRAMA
+            //IMPRIME O ERRO NA TELA NO MOMENTO EXATO DA FALHA, SEM INTERROMPER A EXECU√á√ÉO DO PROGRAMA
             e.printStackTrace();
-            //BLOCO FINALLY SEMPRE … EXECUTADO, SEMPRE SER¡ ENCERRADA A CONEX√O ENTRE O JAVA E O BANCO DADOS FEITO PELO DRIVER   
+            //BLOCO FINALLY SEMPRE √â EXECUTADO, SEMPRE SER√Å ENCERRADA A CONEX√ÉO ENTRE O JAVA E O BANCO DADOS FEITO PELO DRIVER   
         } finally {
             ConnectionDAO.closeConnection(c, stmt);
         }
@@ -74,23 +60,23 @@ public class ContaDAO {
     public static void buscarConta(int numeroConta) {
 
         //Java DataBase Connection (JDBC)
-        //INSTANCIANDO O DRIVER QUE COMUNICA COM O BANCO DE DADOS COM O LAN«AMENTO DE EXCE«’ES
-        //CRIANDO A CONEX√O COM O BANCO DE DADOS
+        //INSTANCIANDO O DRIVER QUE COMUNICA COM O BANCO DE DADOS COM O LAN√áAMENTO DE EXCE√á√ïES
+        //CRIANDO A CONEX√ÉO COM O BANCO DE DADOS
         Connection c = ConnectionDAO.getConnection();
 
-        //PREPARANDO O ENVIO DO CODIGO SQL PARA EXECU«√O NO BANCO DE DADOS
+        //PREPARANDO O ENVIO DO CODIGO SQL PARA EXECU√á√ÉO NO BANCO DE DADOS
         PreparedStatement stmt = null;
 
-        //PREPARANDO A CONFIRMA«√O DO ENVIO DO CODIGO SQL PARA EXUCU«√O NO BANCO DE DADOS
+        //PREPARANDO A CONFIRMA√á√ÉO DO ENVIO DO CODIGO SQL PARA EXUCU√á√ÉO NO BANCO DE DADOS
         ResultSet rs = null;
 
         try {
             stmt = c.prepareStatement("SELECT * FROM banco.conta WHERE NUMERO =" + numeroConta);
             rs = stmt.executeQuery();
 
-            //JOptionPane.showMessageDialog(null,"---------------CONTAS NO BANCO---------------");
-            //COLETANDO OS DADOS INDEPENDENTE DO TAMANHO DA TABELA, UTILIZANDO UM WHILE PARA SEMPRE QUE A PROXIMA LINHA N√O FOR VAZIA, 
-            //    ELE BUSCAR AS INFORMA«’ES. CONDICAO BOOLEANA
+            
+            //COLETANDO OS DADOS INDEPENDENTE DO TAMANHO DA TABELA, UTILIZANDO UM WHILE PARA SEMPRE QUE A PROXIMA LINHA N√ÉO FOR VAZIA, 
+            //    ELE BUSCAR AS INFORMA√á√ïES. CONDICAO BOOLEANA
             if (rs.next()) {
 
                 int id = rs.getInt("IDCONTA");
@@ -108,13 +94,13 @@ public class ContaDAO {
                         + "\nSaldo: " + saldo
                         + "\nAgencia Vinculada: " + agencia);
             } else {
-                JOptionPane.showMessageDialog(null, " Conta n„o localizada.");
+                JOptionPane.showMessageDialog(null, " Conta n√£o localizada.");
             }
 
         } catch (SQLException e) {
-            //IMPRIME O ERRO NA TELA NO MOMENTO EXATO DA FALHA, SEM INTERROMPER A EXECU«√O DO PROGRAMA
+            //IMPRIME O ERRO NA TELA NO MOMENTO EXATO DA FALHA, SEM INTERROMPER A EXECU√á√ÉO DO PROGRAMA
             e.printStackTrace();
-            //BLOCO FINALLY SEMPRE … EXECUTADO, SEMPRE SER¡ ENCERRADA A CONEX√O ENTRE O JAVA E O BANCO DADOS FEITO PELO DRIVER   
+            //BLOCO FINALLY SEMPRE √â EXECUTADO, SEMPRE SER√Å ENCERRADA A CONEX√ÉO ENTRE O JAVA E O BANCO DADOS FEITO PELO DRIVER   
         } finally {
             ConnectionDAO.closeConnection(c, stmt);
         }
@@ -144,7 +130,7 @@ public class ContaDAO {
 
         } catch (SQLException ex) {
 
-            JOptionPane.showMessageDialog(null, "Conta j· existente com o numero informado ou Cliente/Agencia n„o existente. Favor alterar. ");
+            JOptionPane.showMessageDialog(null, "Conta j√° existente com o numero informado ou Cliente/Agencia n√£o existente. Favor alterar. ");
 
         }
     }
@@ -188,7 +174,7 @@ public class ContaDAO {
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(null, "Conta removida com sucesso!");
             } else {
-                JOptionPane.showMessageDialog(null, "Conta n„o localizada.");
+                JOptionPane.showMessageDialog(null, "Conta n√£o localizada.");
             }
 
         } catch (SQLException e) {
