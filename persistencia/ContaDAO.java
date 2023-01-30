@@ -28,7 +28,7 @@ public class ContaDAO {
             stmt = c.prepareStatement("SELECT * FROM banco.conta");
             rs = stmt.executeQuery();
 
-            //JOptionPane.showMessageDialog(null,"---------------CONTAS NO BANCO---------------");
+            
             //COLETANDO OS DADOS INDEPENDENTE DO TAMANHO DA TABELA, UTILIZANDO UM WHILE PARA SEMPRE QUE A PROXIMA LINHA NÃO FOR VAZIA, 
             //    ELE BUSCAR AS INFORMAÇÕES. CONDICAO BOOLEANA
             while (rs.next()) {
