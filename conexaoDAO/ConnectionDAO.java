@@ -10,15 +10,15 @@ public class ConnectionDAO {
 
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306";
-    private static final String USER = "root";
-    private static final String PASS = "12345";
+    private static final String USER = *****
+    private static final String PASS = *****
 
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER);
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException("Erro na conex„o: ", e);
+            throw new RuntimeException("Erro na conex√£o: ", e);
         }
     }
 
